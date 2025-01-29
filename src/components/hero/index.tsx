@@ -14,7 +14,7 @@ function Hero() {
     console.log("Botão clicado!");
 
     if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "button_click", {
+      window.gtag("event", "button_click_testestestes", {
         event_category: "Engajamento",
         event_label: "Botão principal",
       });
