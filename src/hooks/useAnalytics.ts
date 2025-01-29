@@ -5,7 +5,11 @@ const GA_MEASUREMENT_ID = import.meta.env.VITE_GTAG_ID;
 
 export const useAnalytics = () => {
   useEffect(() => {
-    ReactGA.initialize(GA_MEASUREMENT_ID);
+    ReactGA.initialize(GA_MEASUREMENT_ID, {
+      gaOptions: {
+        cookieDomain: "react-analytics-poc.netlify.app",
+      },
+    });
     trackPageView();
   }, []);
 
