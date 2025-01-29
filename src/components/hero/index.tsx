@@ -1,16 +1,24 @@
-import ReactGA from "react-ga4";
+import { useEffect } from "react";
 import styles from "./hero.module.scss";
 
 function Hero() {
+  useEffect(() => {
+    window.gtag?.("event", "page_view", {
+      page_title: "Home",
+      page_location: window.location.href,
+      page_path: window.location.pathname,
+    });
+  }, []);
+
   const handleClick = () => {
     console.log("Botão clicado!");
 
-    ReactGA.event({
-      category: "User",
-      action: "Click Button",
-      label: "Clique Aqui",
-      nonInteraction: true,
-    });
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "button_click", {
+        event_category: "Engajamento",
+        event_label: "Botão principal",
+      });
+    }
   };
 
   return (
