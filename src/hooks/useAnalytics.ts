@@ -7,7 +7,7 @@ export const useAnalytics = () => {
   useEffect(() => {
     ReactGA.initialize(GA_MEASUREMENT_ID, {
       gaOptions: {
-        cookieDomain: "auto",
+        cookieFlags: "SameSite=None; Secure",
       },
     });
     trackPageView();
