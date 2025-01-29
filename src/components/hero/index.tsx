@@ -6,6 +6,7 @@ function Hero() {
 
   const handleClick = () => {
     trackEvent("click", "Button", "Botão Principal");
+    console.log("Botão clicado!");
   };
 
   return (
