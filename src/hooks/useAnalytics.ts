@@ -1,9 +1,21 @@
-const sendEvent = (eventName: string, params?: Record<string, unknown>) => {
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", eventName, params);
-  }
-};
+import { useEffect } from "react";
+import ReactGA from "react-ga4";
+
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GTAG_ID;
 
 export const useAnalytics = () => {
-  return { sendEvent };
+  useEffect(() => {
+    ReactGA.initialize(GA_MEASUREMENT_ID);
+    trackPageView();
+  }, []);
+
+  const trackPageView = () => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  };
+
+  const trackEvent = (action: string, category: string, label?: string) => {
+    ReactGA.event({ action, category, label });
+  };
+
+  return { trackPageView, trackEvent };
 };

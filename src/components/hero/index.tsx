@@ -2,10 +2,10 @@ import styles from "./hero.module.scss";
 import { useAnalytics } from "../../hooks/useAnalytics";
 
 function Hero() {
-  const { sendEvent } = useAnalytics();
+  const { trackEvent } = useAnalytics();
 
   const handleClick = () => {
-    sendEvent("button_click", { label: "Hero Button" });
+    trackEvent("click", "Button", "Botão Principal");
   };
 
   return (
