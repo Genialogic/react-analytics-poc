@@ -1,12 +1,16 @@
+import ReactGA from "react-ga4";
 import styles from "./hero.module.scss";
-import { useAnalytics } from "../../hooks/useAnalytics";
 
 function Hero() {
-  const { trackEvent } = useAnalytics();
-
   const handleClick = () => {
-    trackEvent("click", "Button", "Botão Principal");
     console.log("Botão clicado!");
+
+    ReactGA.event({
+      category: "User",
+      action: "Click Button",
+      label: "Clique Aqui",
+      nonInteraction: true,
+    });
   };
 
   return (
