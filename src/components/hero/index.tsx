@@ -1,24 +1,10 @@
-import { useEffect } from "react";
+import { trackEvent } from "../../utils/analytics";
 import styles from "./hero.module.scss";
 
 function Hero() {
-  useEffect(() => {
-    window.gtag?.("event", "page_view", {
-      page_title: "Home",
-      page_location: window.location.href,
-      page_path: window.location.pathname,
-    });
-  }, []);
-
   const handleClick = () => {
+    trackEvent("Interação", "Clique no botão", "Hero Button");
     console.log("Botão clicado!");
-
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "button_click", {
-        event_category: "Engajamento",
-        event_label: "Botão principal",
-      });
-    }
   };
 
   return (
